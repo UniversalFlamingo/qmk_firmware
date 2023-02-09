@@ -44,6 +44,7 @@ _Static_assert(sizeof(keyboard_config_t) == sizeof(uint32_t), "keyboard_config_t
 
 extern keyboard_config_t keyboard_config;
 extern uint16_t          dpi_array[];
+extern const uint8_t     dpi_array_size;  // Expose the size for process_record_user()
 
 enum ploopy_keycodes {
 #ifdef VIA_ENABLE
