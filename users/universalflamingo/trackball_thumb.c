@@ -27,7 +27,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         if( is_precision_active ) {
             // Precision was off, we are turning it on.
             // Set CPI to half the current value.
-            pointing_device_set_cpi(pointing_device_get_cpi() / 2);
+            current_precision = pointing_device_get_cpi();
+            pointing_device_set_cpi( current_precision / 2);
             return false;
         }
 
