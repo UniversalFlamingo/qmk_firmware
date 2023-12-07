@@ -1,0 +1,9 @@
+#ifdef ENABLE_RGB_MATRIX_NUMLOCK
+#  define RGB_MATRIX_EFFECT_NUMLOCK
+
+RGB_MATRIX_EFFECT(numlock)
+
+#  if defined(RGB_MATRIX_CUSTOM_EFFECT_IMPLS)
+#    include "uf_numlock_animation.c"
+#  endif  // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+#endif    // ENABLE_RGB_MATRIX_NUMLOCK
