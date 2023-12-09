@@ -59,62 +59,44 @@ enum custom_keycodes {
 // Map some vanilla KC_* values that we override so that they stand out in the keymap.
 // See uf_key_overrides.c
 
-#define UF_LPRN     KC_LPRN     // Shift ( is ) (qwerty) or { (raise)
-#define UF_LBRC     KC_LBRC     // Shift [ is ] (qwerty)
-#define UF_LCBR     KC_LCBR     // Shift { is } (qwerty)
-#define UF_RPRN     KC_RPRN     // Shift ) is } (raise)
-
 
 // _QWERTY
     // home row mods
+    #define UF_TAB      LCTL_T(KC_TAB)
+    #define UF_A        LOPT_T(KC_A)
     #define UF_S        LOPT_T(KC_S)
     #define UF_F        LCMD_T(KC_F)
     #define UF_J        RCMD_T(KC_J)
     #define UF_L        ROPT_T(KC_L)
+    #define UF_SCLN     ROPT_T(KC_SCLN)
+    #define UF_QUOT     RCTL_T(KC_QUOT)
     // I prefer shift on the next row
-    #define UF_Z        LSFT_T(KC_Z)
-    #define UF_SLSH     RSFT_T(KC_SLSH)
+    #define UF_ENT      RSFT_T(KC_ENT)
     // Row 3
-    #define UF_ESC      LCTL_T(KC_ESCAPE)
-    #define UF_HOME     LOPT_T(KC_HOME)
-    #define UF_PGDN     KC_PGDN
+    #define UF_HOME     LCTL_T(KC_HOME)
+    #define UF_PGDN     LOPT_T(KC_PGDN)
+    #define UF_PGUP     LOPT_T(KC_PGUP)
     #define UF_END      LCMD_T(KC_END)
-    #define UF_LOWR     LT(0,KC_DOWN)  // Send Backspace on tap, Delete on shift-tap, TL_LOWR on hold
     #define UF_SPC      KC_SPACE
     #define UF_BSPC     KC_BSPC
-    #define UF_UPPR     LT(0,KC_UP)    // Send Tab on tap, TL_UPPR on hold
     #define UF_LEFT     RCMD_T(KC_LEFT)
-    #define UF_DOWN     KC_DOWN
-    #define UF_RIGHT    ROPT_T(KC_RIGHT)
-    #define UF_ENT      RCTL_T(KC_ENTER)
+    #define UF_DOWN     ROPT_T(KC_DOWN)
+    #define UF_UP       ROPT_T(KC_UP)
+    #define UF_RIGHT    RCTL_T(KC_RIGHT)
 
 // _LOWER
     // Row 0
-    #define UF_FMT      S(A(KC_F))      // Shift-Alt-F              -- Format code
-    #define UF_PMNS     KC_PMNS         // Shift numpad - is |      -- See uf_key_overrides.c
     // Row 1
-    #define UF_PAST     KC_PAST         // Shift numpad * is "      -- See uf_key_overrides.c
+    #define UF_FMT      S(A(KC_F))      // Shift-Alt-F              -- Format code
     // Row 2
-    #define UF_PSLS     RSFT_T(KC_PSLS)
     // Row 3
-    #define UF_PENT     RCMD_T(KC_PENT)
-    #define UF_P0       KC_P0
-    #define UF_PDOT     ROPT_T(KC_PDOT)
-    #define UF_PPLS     RCTL_T(KC_PPLS)
 
 // _RAISE
     // Row 0
-    #define UF_LPCB     KC_LPRN         // Shift ( is {     -- See uf_key_overrides.c
-    #define UF_RPCB     KC_RPRN         // Shift ) is }     -- See uf_key_overrides.c
     // Row 1
-    #define UF_9        KC_9            // Shift 9 is [     -- See uf_key_overrides.c
-    #define UF_0        KC_0            // Shift 0 is ]     -- See uf_key_overrides.c
+    #define UF_BSLS     RSFT_T(KC_BSLS)
     // Row 2
-    #define UF_F1       LSFT_T(KC_F1)
-    #define UF_F12      RSFT_T(KC_F12)
     // Row 3
-    #define UF_PGUP     KC_PGUP
-    #define UF_UP       KC_UP
 
 
 // _ADJUST

@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+#include <stdint.h>
+
 // clang-format off
 
 #include "config.h"
@@ -34,16 +36,6 @@
 
 // clang-format off
 
-KO(lprn_q, MOD_MASK_SHIFT, UF_LPRN, KC_RPRN, L_QWERTY);  // Shift ( is )
-KO(lbrc_q, MOD_MASK_SHIFT, UF_LBRC, KC_RBRC, L_QWERTY);  // Shift [ is ]
-KO(lcbr_q, MOD_MASK_SHIFT, UF_LCBR, KC_RCBR, L_QWERTY);  // Shift { is }
-
-KO(psls_l, MOD_MASK_SHIFT, KC_MINS, KC_RPRN, L_LOWER);  // Shift - is )
-
-KO(lpcb_r, MOD_MASK_SHIFT, UF_LPRN, KC_LCBR, L_RAISE);  // Shift ( is {
-KO(rpcb_r, MOD_MASK_SHIFT, UF_RPRN, KC_RCBR, L_RAISE);  // Shift ) is }
-KO(lbrc_r, MOD_MASK_SHIFT, UF_9,    KC_LBRC, L_RAISE);  // Shift 9 is [
-KO(rbrc_r, MOD_MASK_SHIFT, UF_0,    KC_RBRC, L_RAISE);  // Shift 0 is ]
 
 // clang-format on
 
@@ -57,25 +49,11 @@ const key_override_t** KEY_OVERRIDES = (const key_override_t*[]){
 
     // L_QWERTY
 
-    &lprn_q_key_override,
-    &lbrc_q_key_override,
-    &lcbr_q_key_override,
-
     // L_LOWER (numpad)
-
-    &psls_l_key_override,
 
     // L_RAISE
 
-    &lpcb_r_key_override,
-    &rpcb_r_key_override,
-    &lbrc_r_key_override,
-    &rbrc_r_key_override,
-
     // all
-
-    // &bspc_key_override,
-    // &fspc_key_override,
 
     NULL,
 };

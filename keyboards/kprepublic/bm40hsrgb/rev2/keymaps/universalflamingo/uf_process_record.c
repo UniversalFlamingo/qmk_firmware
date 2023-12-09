@@ -79,6 +79,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
+    /*
     case UF_LOWR:
       unregister_code(keycode);
       if (record->tap.count) {
@@ -108,6 +109,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         process_tri_layer(QK_TRI_LAYER_UPPER, record);
       }
       return false;
+    */
 
     case UF_MJM_TG:
       if (record->event.pressed) {
