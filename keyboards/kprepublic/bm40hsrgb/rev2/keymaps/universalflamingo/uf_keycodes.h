@@ -19,20 +19,13 @@
 #endif
 
 enum custom_keycodes {
-  UF_MJM_TG = KB_SAFE_RANGE,  // toggle mouse-jiggle mode
+  UF_MJIG = KB_SAFE_RANGE,  // toggle mouse-jiggle mode
 
   UF_LLOWR,  // Lock Lower Layer
   UF_LUPPR,  // Lock Upper Layer
 
-  UF_NLTOG,  // Toggle numlock (on lower layer)
-
-  UF_UNDT,   // LGUI(KC_LBRC) -- Cmd-[       -- Undent
-  UF_INDT,   // LGUI(KC_RBRC) -- Cmd-]       -- Indent
-
-  UF_PTAB,   // S(G(KC_LBRC)) -- Shift-Cmd-[ -- Previous editor/browser/iTerm tab
-  UF_NTAB,   // S(G(KC_RBRC)) -- Shift-Cmd-] -- Next editor/browser/iTerm tab
-
-  UF_FOLD,   // Send Cmd-k OSM(MOD_LGUI)  Expects user to type a number (or "j") for the fold level.
+  UF_NUM,    // Toggle numlock (on lower layer)
+  UF_BSPC,   // KC_BSPC/KC_DELETE
 
   // B_RGBL_TG,           // rgblight_toggle_noeeprom   -- LEDs below the PCB (i.e. - underlight)
   // B_RGBM_TG,           // rgb_matrix_toggle_noeeprom -- per-key LEDs
@@ -52,7 +45,38 @@ enum custom_keycodes {
   B_RGBL_M_P,  // MODE_PLAIN
   B_RGBL_M_B,  // MODE_BREATHE
   // B_RGBL_M_T,  // MODE_RGBTEST
+
+  // OS Modes
+
+  UF_WIN,    // Set Windows mode (e.g. -- for UF_PTAB, etc.)
+  UF_MAC,    // Set Mac mode
+
+  // Define some handy shortcuts (most are for VSCode)
+
+  // Shortcuts that are os-independent
+
+  UF_TERM,   // Open/Show VSCode Terminal -- Ctrl-`
+
+  // Shortcuts that need special attention in process_record_user()
+
+  UF_FOLD,   // Send Cmd-k OSM(MOD_LGUI)  Expects user to type a number (or "j") for the fold level.
+
+  // Shortcuts that are simple lookups in process_record_user()
+
+  UF_UNDT,  // LGUI(KC_LBRC) -- Cmd-[ -- Undent
+  UF_INDT,  // LGUI(KC_RBRC) -- Cmd-] -- Indent
+
+  UF_PTAB,  // S(G(KC_LBRC)) -- Shift-Cmd-[ -- Previous editor/browser/iTerm tab
+  UF_NTAB,  // S(G(KC_RBRC)) -- Shift-Cmd-] -- Next editor/browser/iTerm tab
+
+  UF_SCAP,  // Shift-Cmd-4 -- Capture a portion of the screen
 };
+
+#define UF_FRST_SHORTCUT UF_UNDT
+#define UF_LAST_SHORTCUT UF_SCAP
+#define UF_SHORTCUTS   (1+UF_LAST_SHORTCUT-UF_FRST_SHORTCUT)
+
+#define UF_SHORTCUT_KEYCODE(keycode)   uf_os_keys[uf_os_mode][keycode-UF_FRST_SHORTCUT]
 
 // clang-format off
 
@@ -77,8 +101,8 @@ enum custom_keycodes {
     #define UF_PGDN     LOPT_T(KC_PGDN)
     #define UF_PGUP     LOPT_T(KC_PGUP)
     #define UF_END      LCMD_T(KC_END)
-    #define UF_SPC      KC_SPACE
-    #define UF_BSPC     KC_BSPC
+    // #define UF_SPC      KC_SPACE
+    // #define UF_BSPC     KC_BSPC
     #define UF_LEFT     RCMD_T(KC_LEFT)
     #define UF_DOWN     ROPT_T(KC_DOWN)
     #define UF_UP       ROPT_T(KC_UP)
@@ -105,5 +129,5 @@ enum custom_keycodes {
     // Row 1
     #define UF_NWIN    LCMD(KC_TAB)   // Cmd-Tab     -- Prev app toggle
     // Row 2
-    #define UF_SCAP    S(G(KC_4))     // Shift-Cmd-4 -- Capture a portion of the screen
+    // #define UF_SCAP    S(G(KC_4))     // Shift-Cmd-4 -- Capture a portion of the screen
     // Row 3

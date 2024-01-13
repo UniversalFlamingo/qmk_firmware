@@ -26,6 +26,29 @@ void matrix_scan_user(void) {
 #endif
 }
 
+enum {
+    WIN_MODE = 0,
+    MAC_MODE
+};
+static unsigned char uf_os_mode = MAC_MODE;
+
+const unsigned short uf_os_keys[][UF_SHORTCUTS] = {
+    [WIN_MODE] = {
+        LCTL(KC_LBRC),  // UF_UNDT
+        LCTL(KC_RBRC),  // UF_INDT
+        LCTL(KC_PGUP),  // UF_PTAB
+        LCTL(KC_PGDN),  // UF_NTAB
+        KC_PSCR         // UF_SCAP
+    },
+    [MAC_MODE] = {
+        LGUI(KC_LBRC),  // UF_UNDT
+        LGUI(KC_RBRC),  // UF_INDT
+        LGUI(KC_LCBR),  // UF_PTAB
+        LGUI(KC_RCBR),  // UF_NTAB
+        S(G(KC_4)),     // UF_SCAP
+    },
+};
+
 void uf_magic_backspace(uint16_t trigger_keycode, uint16_t on_tap_keycode, keyrecord_t *record) {
   uint8_t mods = get_mods();
   uint8_t weak_mods = get_weak_mods();
@@ -72,8 +95,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
       //
 
-    case UF_NLTOG:
-      // UF_NLTOG is on _LOWER so we can only get here if UF_LOWR is pressed
+    case UF_NUM:
+      // UF_NUM is on _LOWER so we can only get here if UF_LOWR is pressed
       if (record->event.pressed) {
         uf_numlock_toggle();
       }
@@ -111,55 +134,94 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     */
 
-    case UF_MJM_TG:
+    case UF_MJIG:
       if (record->event.pressed) {
         uf_mousejiggler_toggle();
       }
       return false;
 
     case UF_BSPC:
-      uf_magic_backspace(keycode, keycode, record);
+      uf_magic_backspace(keycode, KC_BSPC, record);
       return false;
 
-    case UF_SPC:
-      uf_magic_backspace(keycode, keycode, record);
-      return false;
+    // case UF_SPC:
+    //   uf_magic_backspace(keycode, keycode, record);
+    //   return false;
 
     case UF_FOLD:
       // Send Cmd-K then hold Cmd until a character is typed.
-      tap_code16(LGUI(KC_K));
-      set_oneshot_mods(MOD_BIT(KC_LGUI));
+      if( uf_os_mode == MAC_MODE ) {
+        tap_code16(LGUI(KC_K));
+        set_oneshot_mods(MOD_BIT(KC_LGUI));
+      }
+      else {
+        tap_code16(LCTL(KC_K));
+        set_oneshot_mods(MOD_BIT(KC_LCTL));
+      }
       return false;
 
-    case UF_UNDT:  // undent, shift + undent sends indent
+    case UF_UNDT:  // undent -- Cmd-[
       if (record->event.pressed) {
         if ((get_mods() | get_weak_mods()) & MOD_MASK_SHIFT) {
           del_mods(MOD_MASK_SHIFT);
-          tap_code16(LGUI(KC_RBRC));  // indent
+          tap_code16(UF_SHORTCUT_KEYCODE(UF_INDT));  // indent -- Cmd-]
         } else {
-          tap_code16(LGUI(KC_LBRC));  // undent
+          tap_code16(UF_SHORTCUT_KEYCODE(keycode));  // undent -- Cmd-[
         }
       }
       return false;
-    case UF_INDT:  // indent
-      if (record->event.pressed) {
-        tap_code16(LGUI(KC_RBRC));
+    case UF_INDT:  // indent -- Cmd-]
+    if (record->event.pressed) {
+        if ((get_mods() | get_weak_mods()) & MOD_MASK_SHIFT) {
+          del_mods(MOD_MASK_SHIFT);
+          tap_code16(UF_SHORTCUT_KEYCODE(UF_UNDT));  // undent -- Cmd-[
+        } else {
+          tap_code16(UF_SHORTCUT_KEYCODE(keycode));  // indent -- Cmd-]
+        }
       }
       return false;
 
-    case UF_PTAB:  // previous tab, shift + previuos tab sends next tab
+    case UF_PTAB:  // previous tab
       if (record->event.pressed) {
         if ((get_mods() | get_weak_mods()) & MOD_MASK_SHIFT) {
           del_mods(MOD_MASK_SHIFT);
-          tap_code16(S(G(KC_LBRC)));  // next tab
+          tap_code16(UF_SHORTCUT_KEYCODE(UF_NTAB));  // indent -- Cmd-]
         } else {
-          tap_code16(S(G(KC_RBRC)));  // previous tab
+          tap_code16(UF_SHORTCUT_KEYCODE(keycode));  // undent -- Cmd-[
         }
       }
       return false;
     case UF_NTAB:  // next tab
       if (record->event.pressed) {
-        tap_code16(S(G(KC_RBRC)));
+        if ((get_mods() | get_weak_mods()) & MOD_MASK_SHIFT) {
+          del_mods(MOD_MASK_SHIFT);
+          tap_code16(UF_SHORTCUT_KEYCODE(UF_PTAB));  // undent -- Cmd-[
+        } else {
+          tap_code16(UF_SHORTCUT_KEYCODE(keycode));  // indent -- Cmd-]
+        }
+      }
+      return false;
+
+    case UF_SCAP:  // screen capture
+      if (record->event.pressed) {
+          tap_code16(UF_SHORTCUT_KEYCODE(keycode));
+      }
+      return false;
+
+    case UF_TERM: // Open/Show VSCode Terminal -- Ctrl-`
+      if (record->event.pressed) {
+        tap_code16(LCTL(KC_GRV));
+      }
+      return false;
+
+    case UF_WIN:
+      if (record->event.pressed) {
+        uf_os_mode = WIN_MODE;
+      }
+      return false;
+    case UF_MAC:
+      if (record->event.pressed) {
+        uf_os_mode = MAC_MODE;
       }
       return false;
   }
