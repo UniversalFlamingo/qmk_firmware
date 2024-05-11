@@ -26,15 +26,11 @@
 
 void keyboard_post_init_user(void) {
 #ifdef RGB_MATRIX_ENABLE
-  rgb_matrix_enable_noeeprom();
-  rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
-  rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+  rgb_matrix_enable_noeeprom();  // Enables per-key RGB, without saving settings
 #endif
 
 #ifdef RGBLIGHT_ENABLE
-  rgblight_enable_noeeprom();  // Enables RGB, without saving settings
-  rgblight_sethsv_noeeprom(HSV_YELLOW);
-  rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+  rgblight_enable_noeeprom();  // Enables under-pcb RGB, without saving settings
 #endif
 
 #if defined(VIAL_ENABLE) && defined(VIAL_KEY_OVERRIDE_ENABLE) && defined(UF_KEY_OVERRIDE_ENABLE)

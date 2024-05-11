@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_ADJUST] = LAYOUT_ortho_4x12_1x2uC(
     UF_NAPP, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_P, B_RGBL_TOG, B_RGBL_MOD,  B_RGBL_HUI, B_RGBL_SAI, B_RGBL_VAI,
-    UF_NWIN, KC_NO  , RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_B, KC_NO  ,    B_RGBL_RMOD, B_RGBL_HUD, B_RGBL_SAD, B_RGBL_VAD,
+    UF_NWIN, UF_RRST, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_B, KC_NO  ,    B_RGBL_RMOD, B_RGBL_HUD, B_RGBL_SAD, B_RGBL_VAD,
     KC_CAPS, UF_NUM , KC_INS , KC_NO  , UF_MJIG, UF_WIN , UF_MAC , KC_NO  ,    KC_NO  ,     KC_UP  ,    _______,    _______,
     QK_BOOT, _______, _______, _______, _______, _______,          _______,    KC_LEFT,     KC_DOWN,    KC_RGHT,    UF_SCAP
 )

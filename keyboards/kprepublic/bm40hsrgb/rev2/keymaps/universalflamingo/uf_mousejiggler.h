@@ -13,7 +13,7 @@
 #endif
 
 #ifndef MOUSEJIGGLER_MULTIPLIER
-#  define MOUSEJIGGLER_MULTIPLIER 10  // Total default timeout of 5 minutes.
+#  define MOUSEJIGGLER_MULTIPLIER 10  // Total default timeout of 10 minutes.
 #endif
 
 /** @brief Matrix scan task for MouseJiggler feature */

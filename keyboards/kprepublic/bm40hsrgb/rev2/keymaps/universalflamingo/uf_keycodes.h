@@ -27,6 +27,8 @@ enum custom_keycodes {
   UF_NUM,    // Toggle numlock (on lower layer)
   UF_BSPC,   // KC_BSPC/KC_DELETE
 
+  UF_RRST,   // Reset RGB to preferred defaults. (handled in uf_process_record.c)
+
   // B_RGBL_TG,           // rgblight_toggle_noeeprom   -- LEDs below the PCB (i.e. - underlight)
   // B_RGBM_TG,           // rgb_matrix_toggle_noeeprom -- per-key LEDs
 

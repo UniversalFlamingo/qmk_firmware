@@ -134,6 +134,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     */
 
+    case UF_RRST:   // Reset RGB to preferred defaults.
+        #ifdef RGB_MATRIX_ENABLE
+            rgb_matrix_enable_noeeprom();
+            rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+        #endif
+        #ifdef RGBLIGHT_ENABLE
+            rgblight_enable_noeeprom();
+            rgblight_sethsv_noeeprom(HSV_YELLOW);
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+        #endif
+      return false;
+
     case UF_MJIG:
       if (record->event.pressed) {
         uf_mousejiggler_toggle();
