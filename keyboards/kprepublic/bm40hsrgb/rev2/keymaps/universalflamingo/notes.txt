@@ -15,8 +15,8 @@
    |  caplock  |  numlock  |    ins    |           |   mjig    |    win    |    mac    |           |           |    up     |           |           |
    +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
    |           |           |           |           |           |                       |           | )         |           |           |           |
-   |   home    |   pgdn    |   pgup    |    end    |           |         space         |           |      lft  |      dwn  |       up  |      rgt  |
-   |    ctl    |    opt    |    opt    |    cmd    |   lower   |                       |   raise   | 0  cmd    | .  opt    | +  opt    |    ctl    |
+   |   home    |   pgdn    |   pgup    |    end    |           |         space         |           |    lft    |    dwn    |     up    |    rgt    |
+   |    ctl lft|    opt dwn|    opt  up|    cmd rgt|   lower   |                       |   raise   | 0  cmd lft| .  opt dwn| +  opt  up|    ctl rgt|
    |   reset   |           |           |           |           |                       |           |    lft    |    dwn    |    rgt    |  scrncap  |
    +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
 
@@ -29,3 +29,5 @@
                                               +--------------------------------+---------------------------------+---------------------------------+
 
 TODO: Optionally save current lighting config. Hot keys for common configs?
+
+make clean && make kprepublic/bm40hsrgb/rev2:universalflamingo

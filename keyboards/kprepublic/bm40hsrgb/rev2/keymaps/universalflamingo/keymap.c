@@ -57,8 +57,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  caplock  |  numlock  |    ins    |           |   mjig    |    win    |    mac    |           |           |    up     |           |           |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
  * |           |           |           |           |           |                       |           | )         |           |           |           |
- * |   home    |   pgdn    |   pgup    |    end    |           |         space         |           |      lft  |      dwn  |       up  |      rgt  |
- * |    ctl    |    opt    |    opt    |    cmd    |   lower   |                       |   raise   | 0  cmd    | .  opt    | +  opt    |    ctl    |
+ * |   home    |   pgdn    |   pgup    |    end    |           |         space         |           |    lft    |    dwn    |     up    |    rgt    |
+ * |    ctl lft|    opt dwn|    opt  up|    cmd rgt|   lower   |                       |   raise   | 0  cmd lft| .  opt dwn| +  opt  up|    ctl rgt|
  * |   reset   |           |           |           |           |                       |           |    lft    |    dwn    |    rgt    |  scrncap  |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
  *
@@ -91,13 +91,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DELETE,
     _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_NO  , KC_NO  , KC_LBRC, KC_RBRC, KC_PIPE,
     _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_NO  , KC_LCBR, KC_RCBR, UF_BSLS,
-    _______, _______, _______, _______, _______, _______,          _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_UP
+    _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_UP  , _______,          _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_UP
 ),
 [_ADJUST] = LAYOUT_ortho_4x12_1x2uC(
     UF_NAPP, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_P, B_RGBL_TOG, B_RGBL_MOD,  B_RGBL_HUI, B_RGBL_SAI, B_RGBL_VAI,
     UF_NWIN, UF_RRST, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_B, KC_NO  ,    B_RGBL_RMOD, B_RGBL_HUD, B_RGBL_SAD, B_RGBL_VAD,
-    KC_CAPS, UF_NUM , KC_INS , KC_NO  , UF_MJIG, UF_WIN , UF_MAC , KC_NO  ,    KC_NO  ,     KC_UP  ,    _______,    _______,
-    QK_BOOT, _______, _______, _______, _______, _______,          _______,    KC_LEFT,     KC_DOWN,    KC_RGHT,    UF_SCAP
+    KC_CAPS, UF_NUM , KC_INS , KC_NO  , UF_MJIG, UF_WIN , UF_MAC , KC_NO  ,    KC_NO  ,     _______,    _______,    _______,
+    QK_BOOT, _______, _______, _______, _______, _______,          _______,    _______,     _______,    _______,    UF_SCAP
 )
 
 };

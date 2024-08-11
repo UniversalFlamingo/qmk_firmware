@@ -83,9 +83,17 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) { uf_autoco
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   //
 
-  // Handle some common typos
-  if (record->event.pressed && uf_autocorrect_process_record(keycode, record)) {
-    return false;
+  if (record->event.pressed) {
+
+    // Reset the timer when a key is pressed.
+    if(uf_is_mousejiggler_on()) {
+        uf_mousejiggler_reset_idle_timer();
+    }
+
+    // Handle some common typos
+    if(uf_autocorrect_process_record(keycode, record)) {
+        return false;
+    }
   }
 
   if (!uf_process_rgb_keycodes(keycode, record)) {
