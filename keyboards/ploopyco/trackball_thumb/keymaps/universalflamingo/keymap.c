@@ -26,7 +26,7 @@
     B6
  */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT( KC_BTN4, KC_BTN1, KC_BTN3, KC_BTN2, KC_BTN5, OSL(1)  ),
+    [0] = LAYOUT( KC_BTN4,  KC_BTN1,  KC_BTN3,  KC_BTN2,           KC_BTN5,   OSL(1)  ),
     [1] = LAYOUT( UF_DPI_0, UF_DPI_1, UF_DPI_2, UF_PRECISION_MODE, DPI_CONFIG, TO(0)  ),
     [2] = LAYOUT( _______, _______, _______, _______, _______, _______ ),
     [3] = LAYOUT( _______, _______, _______, _______, _______, _______ ),

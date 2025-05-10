@@ -37,41 +37,47 @@
 
 // clang-format off
 
+
+#define PT_LOWR _______
+#define PT_SPC  _______
+#define PT_UPPR _______
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  *
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
- * |           |          !|          @|          #|          $|          %|          ^| &        &| *        *| (        (| _        )|     del   |
+ * |           |           |           |           |           |           |           | &         | *         | (         | _         |     del   |
  * |   gesc    |     q     |     w     |     e     |     r     |     t     |     y     |     u     |     i     |     o     |     p     |    bsp    |
- * |~        ` |(        1 |)        2 |         3 |         4 |term     5 |fold     6 |7        7 |8        8 |9        9 |-        0 |<-       ->|
- * |   cmd-`   |    rgb    |   mode+   |   hue +   |   sat +   |  bright+  |           | underglow |   mode+   |   hue +   |   sat +   |  bright+  |
+ * | ~       ` | (         | )         |           |           |term       |fold       | 7         | 8         | 9       ( | -       ) |bsp     del|
+ * |   cmd-`   |    rgb    |   mode+   |   hue +   |   sat +   |  bright+  | rgb plain | underglow |   mode+   |   hue +   |   sat +   |  bright+  |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
- * |           |           |           |           |           |           |           | $         | %         | ^        {|      :   }| +    "    |
+ * |           |           |           |           |           |           |           | $         | %         | ^         | :    :    | +    "    |
  * |    tab    |     a     |     s     |     d     |     f     |     g     |     h     |     j     |     k     |     l     |     ;     |     '     |
- * |           |[        F1| ]       F2|         F3|fmt      F4|<<<      F5|>>>      F6|4          |5          |6        [ |*        ] |=        | |
- * |  cmd-tab  |           |   mode-   |   hue -   |   sat -   |  bright-  |           |           |   mode-   |   hue -   |   sat -   |  bright-  |
+ * |           | [       F1| ]       F2|         F3|fmt      F4|<<<      F5|>>>      F6| 4         | 5         | 6       [ | *       ] | =       | |
+ * |  cmd-tab  | rgb reset |   mode-   |   hue -   |   sat -   |  bright-  |           |           |   mode-   |   hue -   |   sat -   |  bright-  |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
- * |           |           |           |           |           |           |           | !         | @    <    | #    >    |      ?    |          ||
+ * |           |           |           |           |           |           |           | !         | @    <    | #    >    |      ?    |         | |
  * |           |     z     |     x     |     c     |     v     |     b     |     n     |     m     |     ,     |     .     |     /     |    ent    |
- * |    sft    |{        F7|}        F8|         F9|         Fa|<<t      Fb|>>t      Fc|1          |2          |3        { |         } |    sft  \ |
- * |  caplock  |  numlock  |    ins    |           |   mjig    |    win    |    mac    |           |           |    up     |           |           |
+ * |    sft    | {       F7| }       F8|         F9|         Fa|<<t      Fb|>>t      Fc| 1         | 2         | 3       { |         } |    sft  \ |
+ * |  caplock  |  numlock  |    ins    |    cmd    |   mjig    |    mac    |    win    |   mjig    |    cmd    |    up     |           |           |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
  * |           |           |           |           |           |                       |           | )         |           |           |           |
  * |   home    |   pgdn    |   pgup    |    end    |           |         space         |           |    lft    |    dwn    |     up    |    rgt    |
- * |    ctl lft|    opt dwn|    opt  up|    cmd rgt|   lower   |                       |   raise   | 0  cmd lft| .  opt dwn| +  opt  up|    ctl rgt|
+ * |    ctl lft|    opt  dn|    opt  up|    cmd rgt|   lower   |                       |   raise   | 0  cmd lft| .  opt  dn| +  opt  up|    ctl rgt|
  * |   reset   |           |           |           |           |                       |           |    lft    |    dwn    |    rgt    |  scrncap  |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
  *
  * +-----------+                              +--------------------------------+---------------------------------+---------------------------------+
  * | LS   S  RS|                              | fmt = shift-alt-f              | fold = Cmd-k Cmd-<n>            | mjig = keep awake / mouse jig.  |
- * |    tap    |                              | tap = tap on layer 0           | hold = on key hold              | S = shift on layer 0            |
+ * |    tap    |                              | tap = tap on layer 0           | H = hold = on key hold          | S = shift on layer 0            |
  * |L    H   R |                              | L = Lower, LS = Lower + Shift  | R = Raise, RS = Raise + Shift   | adj = Adjust (Lower + Raise)    |
  * |    adj    |                              | <<< / >>> = undent / indent    | <<t / >>t = prev / next tab     | term = vscode terminal          |
- * +-----------+                              | ls(rs(bsp)) = delete line      | <-  /  -> = normal bsp / del    |                                 |
+ * +-----------+                              | ls(rs(bsp)) = delete line      |                                 |                                 |
  *                                            +--------------------------------+---------------------------------+---------------------------------+
+ *
  *         ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,
- *  ctrl   , opt    , opt    ,        , cmd    ,        ,        , cmd    ,        , opt    , opt    , ctrl   ,
- *  shift  ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        , shift  ,
+ *         ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,
+ *  shift  ,        ,        , cmd    ,        ,        ,        ,        , cmd    ,        ,        , shift  ,
  *  ctrl   , opt    , opt    , cmd    ,        ,                 ,        , cmd    , opt    , opt    , ctrl   ,
  */
 
@@ -79,25 +85,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     QK_GESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    UF_BSPC,
     KC_TAB , KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, UF_ENT,
-    UF_HOME, UF_PGDN, UF_PGUP, UF_END,  TL_LOWR, KC_SPC,           TL_UPPR, UF_LEFT, UF_DOWN, UF_UP  , UF_RIGHT
+    UF_HOME, UF_PGDN, UF_PGUP, UF_END,  TL_LOWR,     KC_SPC,       TL_UPPR, UF_LEFT, UF_DOWN, UF_UP  , UF_RIGHT
 ),
 [_LOWER] = LAYOUT_ortho_4x12_1x2uC(
-    KC_TILD, KC_LPRN, KC_RPRN, KC_NO  , KC_NO  , UF_TERM, UF_FOLD, KC_7,    KC_8,    KC_9,    KC_MINS, KC_BSPC,
-    _______, KC_LBRC, KC_RBRC, KC_NO  , UF_FMT , UF_UNDT, UF_INDT, KC_4,    KC_5,    KC_6,    KC_ASTR, KC_EQL,
-    _______, KC_LCBR, KC_RCBR, KC_NO  , UF_FOLD, UF_PTAB, UF_NTAB, KC_1,    KC_2,    KC_3,    KC_SLSH, _______,
-    _______, _______, _______, _______, _______, _______,          _______, KC_0,    KC_DOT,  KC_PLUS, _______
+    KC_TILD, KC_LPRN, KC_RPRN, KC_HASH, KC_NO  , UF_TERM, UF_FOLD, KC_7,    KC_8,    KC_9,    KC_MINS, KC_BSPC,
+    _______, KC_LBRC, KC_RBRC, KC_NO  , UF_FMT , UF_UNDT, UF_INDT, KC_4,    KC_5,    KC_6,    UF_ASTR, KC_EQL,
+    _______, KC_LCBR, KC_RCBR, KC_NO  , KC_NO  , UF_PTAB, UF_NTAB, KC_1,    KC_2,    KC_3,    KC_SLSH, _______,
+    _______, _______, _______, _______, PT_LOWR,     PT_SPC,       PT_UPPR, KC_0,    KC_DOT,  KC_PLUS, _______
 ),
 [_RAISE] = LAYOUT_ortho_4x12_1x2uC(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DELETE,
-    _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_NO  , KC_NO  , KC_LBRC, KC_RBRC, KC_PIPE,
-    _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_NO  , KC_LCBR, KC_RCBR, UF_BSLS,
-    _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_UP  , _______,          _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_UP
+    KC_GRV,  _______, _______, _______, _______, _______, _______,  _______, _______, KC_LPRN, KC_RPRN, KC_DELETE,
+    _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_NO  , KC_NO   , KC_LBRC, KC_RBRC, KC_PIPE,
+    _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_NO  , KC_NO   , KC_LCBR, KC_RCBR, UF_BSLS,
+    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, PT_LOWR,     PT_SPC,       PT_UPPR, KC_LEFT , KC_DOWN, KC_UP,   KC_RGHT
 ),
 [_ADJUST] = LAYOUT_ortho_4x12_1x2uC(
     UF_NAPP, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_P, B_RGBL_TOG, B_RGBL_MOD,  B_RGBL_HUI, B_RGBL_SAI, B_RGBL_VAI,
     UF_NWIN, UF_RRST, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_B, KC_NO  ,    B_RGBL_RMOD, B_RGBL_HUD, B_RGBL_SAD, B_RGBL_VAD,
-    KC_CAPS, UF_NUM , KC_INS , KC_NO  , UF_MJIG, UF_WIN , UF_MAC , KC_NO  ,    KC_NO  ,     _______,    _______,    _______,
-    QK_BOOT, _______, _______, _______, _______, _______,          _______,    _______,     _______,    _______,    UF_SCAP
+    KC_CAPS, UF_NUM , KC_INS , KC_LGUI, UF_MJIG, UF_MAC , UF_WIN , UF_MJIG,    KC_RGUI,     KC_NO  ,    KC_NO  ,    KC_NO  ,
+    QK_BOOT, KC_NO  , KC_NO  , KC_NO  , PT_LOWR,     PT_SPC,       PT_UPPR,    KC_NO  ,     KC_NO  ,    KC_NO  ,    UF_SCAP
 )
 
 };

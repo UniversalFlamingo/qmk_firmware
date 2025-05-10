@@ -62,6 +62,7 @@ enum custom_keycodes {
   // Shortcuts that need special attention in process_record_user()
 
   UF_FOLD,   // Send Cmd-k OSM(MOD_LGUI)  Expects user to type a number (or "j") for the fold level.
+  UF_ASTR,   // Send * normally. Send : when shifted
 
   // Shortcuts that are simple lookups in process_record_user()
 

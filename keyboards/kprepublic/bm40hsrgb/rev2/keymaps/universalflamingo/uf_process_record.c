@@ -181,6 +181,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 
+    case UF_ASTR:
+      if (record->event.pressed) {
+        if ((get_mods() | get_weak_mods()) & MOD_MASK_SHIFT) {
+          del_mods(MOD_MASK_SHIFT);
+          tap_code16(KC_COLN);  // colon -- Shift-;
+        }
+        else {
+          tap_code16(KC_ASTR);  // asterisk -- Shift-8
+        }
+      }
+      return false;
+
     case UF_UNDT:  // undent -- Cmd-[
       if (record->event.pressed) {
         if ((get_mods() | get_weak_mods()) & MOD_MASK_SHIFT) {
