@@ -73,10 +73,13 @@ enum custom_keycodes {
   UF_NTAB,  // S(G(KC_RBRC)) -- Shift-Cmd-] -- Next editor/browser/iTerm tab
 
   UF_SCAP,  // Shift-Cmd-4 -- Capture a portion of the screen
+
+  UF_COPY,  // Copy
+  UF_PSTE,  // Paste
 };
 
 #define UF_FRST_SHORTCUT UF_UNDT
-#define UF_LAST_SHORTCUT UF_SCAP
+#define UF_LAST_SHORTCUT UF_PSTE
 #define UF_SHORTCUTS   (1+UF_LAST_SHORTCUT-UF_FRST_SHORTCUT)
 
 #define UF_SHORTCUT_KEYCODE(keycode)   uf_os_keys[uf_os_mode][keycode-UF_FRST_SHORTCUT]

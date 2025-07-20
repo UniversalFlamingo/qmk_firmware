@@ -38,14 +38,18 @@ const unsigned short uf_os_keys[][UF_SHORTCUTS] = {
         LCTL(KC_RBRC),  // UF_INDT
         LCTL(KC_PGUP),  // UF_PTAB
         LCTL(KC_PGDN),  // UF_NTAB
-        KC_PSCR         // UF_SCAP
+        KC_PSCR,        // UF_SCAP
+        LCTL(KC_C),     // UF_COPY
+        LCTL(KC_V)      // UF_PSTE
     },
     [MAC_MODE] = {
-        LGUI(KC_LBRC),  // UF_UNDT
-        LGUI(KC_RBRC),  // UF_INDT
-        LGUI(KC_LCBR),  // UF_PTAB
-        LGUI(KC_RCBR),  // UF_NTAB
+        LCMD(KC_LBRC),  // UF_UNDT
+        LCMD(KC_RBRC),  // UF_INDT
+        LCMD(KC_LCBR),  // UF_PTAB
+        LCMD(KC_RCBR),  // UF_NTAB
         S(G(KC_4)),     // UF_SCAP
+        LCMD(KC_C),     // UF_COPY
+        LCMD(KC_V)      // UF_PSTE
     },
 };
 
@@ -236,6 +240,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
 
     case UF_SCAP:  // screen capture
+    case UF_COPY:  // Copy
+    case UF_PSTE:  // Paste
       if (record->event.pressed) {
           tap_code16(UF_SHORTCUT_KEYCODE(keycode));
       }

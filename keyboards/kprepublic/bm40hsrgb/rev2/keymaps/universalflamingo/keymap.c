@@ -58,8 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
  * |           |           |           |           |           |           |           | !         | @    <    | #    >    |      ?    |         | |
  * |           |     z     |     x     |     c     |     v     |     b     |     n     |     m     |     ,     |     .     |     /     |    ent    |
- * |    sft    | {       F7| }       F8|         F9|         Fa|<<t      Fb|>>t      Fc| 1         | 2         | 3       { |         } |    sft  \ |
- * |  caplock  |  numlock  |    ins    |    cmd    |   mjig    |    mac    |    win    |   mjig    |    cmd    |    up     |           |           |
+ * |    sft    | {       F7| }       F8|Copy     F9|Paste    Fa|<<t      Fb|>>t      Fc| 1         | 2         | 3       { |         } |    sft  \ |
+ * |  caplock  |  numlock  |    ins    |           |   mjig    |    mac    |    win    |   mjig    |           |    up     |           |           |
  * +-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
  * |           |           |           |           |           |                       |           | )         |           |           |           |
  * |   home    |   pgdn    |   pgup    |    end    |           |         space         |           |    lft    |    dwn    |     up    |    rgt    |
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  *         ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,
  *         ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,
- *  shift  ,        ,        , cmd    ,        ,        ,        ,        , cmd    ,        ,        , shift  ,
+ *  shift  ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        , shift  ,
  *  ctrl   , opt    , opt    , cmd    ,        ,                 ,        , cmd    , opt    , opt    , ctrl   ,
  */
 
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_ortho_4x12_1x2uC(
     KC_TILD, KC_LPRN, KC_RPRN, KC_HASH, KC_NO  , UF_TERM, UF_FOLD, KC_7,    KC_8,    KC_9,    KC_MINS, KC_BSPC,
     _______, KC_LBRC, KC_RBRC, KC_NO  , UF_FMT , UF_UNDT, UF_INDT, KC_4,    KC_5,    KC_6,    UF_ASTR, KC_EQL,
-    _______, KC_LCBR, KC_RCBR, KC_NO  , KC_NO  , UF_PTAB, UF_NTAB, KC_1,    KC_2,    KC_3,    KC_SLSH, _______,
+    _______, KC_LCBR, KC_RCBR, UF_COPY, UF_PSTE, UF_PTAB, UF_NTAB, KC_1,    KC_2,    KC_3,    KC_SLSH, _______,
     _______, _______, _______, _______, PT_LOWR,     PT_SPC,       PT_UPPR, KC_0,    KC_DOT,  KC_PLUS, _______
 ),
 [_RAISE] = LAYOUT_ortho_4x12_1x2uC(
@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_ortho_4x12_1x2uC(
     UF_NAPP, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_P, B_RGBL_TOG, B_RGBL_MOD,  B_RGBL_HUI, B_RGBL_SAI, B_RGBL_VAI,
     UF_NWIN, UF_RRST, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_B, KC_NO  ,    B_RGBL_RMOD, B_RGBL_HUD, B_RGBL_SAD, B_RGBL_VAD,
-    KC_CAPS, UF_NUM , KC_INS , KC_LGUI, UF_MJIG, UF_MAC , UF_WIN , UF_MJIG,    KC_RGUI,     KC_NO  ,    KC_NO  ,    KC_NO  ,
+    KC_CAPS, UF_NUM , KC_INS , KC_NO  , UF_MJIG, UF_MAC , UF_WIN , UF_MJIG,    KC_NO  ,     KC_NO  ,    KC_NO  ,    KC_NO  ,
     QK_BOOT, KC_NO  , KC_NO  , KC_NO  , PT_LOWR,     PT_SPC,       PT_UPPR,    KC_NO  ,     KC_NO  ,    KC_NO  ,    UF_SCAP
 )
 
